@@ -1,16 +1,31 @@
-from typing import Iterable
+"""本模块定义了协议适配基类，各协议请继承以下基类。
 
-try:
-    import pkg_resources
-    pkg_resources.declare_namespace(__name__)
-    del pkg_resources
-except ImportError:
-    import pkgutil
-    __path__: Iterable[str] = pkgutil.extend_path(
-        __path__,  # type: ignore
-        __name__)
-    del pkgutil
-except Exception:
-    pass
+使用 {ref}`nonebot.drivers.Driver.register_adapter` 注册适配器。
 
-from ._base import Bot, Event, Message, MessageSegment
+FrontMatter:
+    mdx:
+        format: md
+    sidebar_position: 0
+    description: nonebot.adapters 模块
+"""
+
+from nonebot.internal.adapter import Adapter as Adapter
+from nonebot.internal.adapter import Bot as Bot
+from nonebot.internal.adapter import Event as Event
+from nonebot.internal.adapter import Message as Message
+from nonebot.internal.adapter import MessageSegment as MessageSegment
+from nonebot.internal.adapter import MessageTemplate as MessageTemplate
+
+__autodoc__ = {
+    "Bot": True,
+    "Event": True,
+    "Adapter": True,
+    "Message": True,
+    "Message.__getitem__": True,
+    "Message.__contains__": True,
+    "Message._construct": True,
+    "MessageSegment": True,
+    "MessageSegment.__str__": True,
+    "MessageSegment.__add__": True,
+    "MessageTemplate": True,
+}
